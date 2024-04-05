@@ -6,22 +6,23 @@ const taskRouter = express.Router();
 
 
 
-taskRouter.post("/add", auth, async (req, res) => {
+taskRouter.post("/add", auth,  async (req, res) => {
     try {
 
         const tasks = new TaskModel(req.body)
         await tasks.save()
-        res.status(200).send({ "msg": "tasks added", "post": req.body })
+        res.status(200).json({ "msg": "tasks added", "post": req.body })
 
     } catch (err) {
         res.status(400).send({ "error": err })
     }
 })
 
-taskRouter.get("/", auth, async (req, res) => {
+// auth {userID:req.body.userID}
+taskRouter.get("/",auth, async (req, res) => {
     try {
             const tasks = await TaskModel.find({userID:req.body.userID})
-            res.status(200).send(tasks)
+            res.status(200).json(tasks)
 
     } catch (err) {
         res.status(400).send({ "error": err })
@@ -36,7 +37,7 @@ taskRouter.patch("/update/:taskID", auth, async (req, res) => {
             await TaskModel.findByIdAndUpdate({ _id: taskID }, req.body)
             res.status(200).send(req.body)
         }else{
-            res.status(400).send({"msg":"You are not authorized"})
+            res.status(400).json({"msg":"You are not authorized"})
         }
         
     } catch (err) {
