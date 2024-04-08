@@ -18,6 +18,10 @@ const taskSchema= mongoose.Schema({
         enum: ['High', 'Medium', 'Low'],
         required: true,
       },
+      status:{
+        type: Boolean,
+        default: false,
+      },
       userID: String,
     username: String
 },

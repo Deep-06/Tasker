@@ -35,15 +35,38 @@ taskRouter.patch("/update/:taskID", auth, async (req, res) => {
         const task=await TaskModel.findOne({_id:taskID})
         if(req.body.userID===task.userID){
             await TaskModel.findByIdAndUpdate({ _id: taskID }, req.body)
-            res.status(200).send(req.body)
+            res.status(200).json(req.body)
         }else{
-            res.status(400).json({"msg":"You are not authorized"})
+            res.status(400).send({"msg":"You are not authorized"})
         }
         
     } catch (err) {
         res.status(400).send({ "error": err })
     }
 })
+
+taskRouter.patch("/toggleStatus/:taskID", auth, async (req, res) => {
+    const { taskID } = req.params;
+    try {
+        const task = await TaskModel.findOne({ _id: taskID });
+        if (!task) {
+            return res.status(404).json({ "msg": "Task not found" });
+        }
+
+        if (req.body.userID !== task.userID) {
+            return res.status(401).json({ "msg": "You are not authorized to update this task" });
+        }
+
+        // Toggle the status
+        task.status = !task.status;
+        await task.save();
+
+        res.status(200).json(task);
+    } catch (err) {
+        res.status(500).json({ "error": err.message });
+    }
+});
+
 taskRouter.delete("/delete/:taskID", auth, async (req, res) => {
     const { taskID } = req.params
     try {
