@@ -5,6 +5,7 @@ const initialState = {
     msg: "",
     token: JSON.parse(localStorage.getItem("token")) || null,
     isError: false,
+    isAuth:false,
 };
 
 
@@ -17,7 +18,7 @@ export const reducer = (state = initialState, { type, payload }) => {
             return { ...state, isLoading: false, isError: true };
         }
         case LOGIN_POST_SUCCESS: {
-            return { ...state, isLoading: false, isError: false, msg: payload.msg, token: payload.token };
+            return { ...state, isLoading: false, isError: false, isAuth:true, msg: payload.msg, token: payload.token };
         }
         case REGISTER_POST_SUCCESS: {
             return { ...state, isLoading: false, isError: false, msg: payload };
