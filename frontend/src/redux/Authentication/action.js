@@ -1,7 +1,9 @@
 import axios from "axios";
 import { LOGIN_POST_FAILURE, LOGIN_POST_REQUEST, LOGIN_POST_SUCCESS, REGISTER_POST_SUCCESS } from "../actionTypes";
 
-const URL = "http://localhost:8080"
+// const URL = "http://localhost:8080"
+const URL = "https://tasker-n6jg.onrender.com"
+
 export const postUserRegistration = (newUserdata) => async (dispatch) => {
     try {
         dispatch({ type: LOGIN_POST_REQUEST })

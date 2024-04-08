@@ -2,7 +2,8 @@ import axios from "axios"
 
 import {GET_TASK_SUCCESS, PATCH_TASK_SUCCESS, POST_TASK_SUCCESS, TASK_DELETE, TASK_FAILURE, TASK_REQUEST, TOGGLE_STATUS} from "../actionTypes";
 
-const URL = "http://localhost:8080"
+// const URL = "http://localhost:8080"
+const URL = "https://tasker-n6jg.onrender.com"
 export const addTask = (newTask,token) => async(dispatch) => {
 try{
     dispatch({ type: TASK_REQUEST });

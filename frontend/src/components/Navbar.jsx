@@ -1,13 +1,15 @@
 import React from 'react'
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
+import { Link ,useNavigate} from "react-router-dom";
+import { useSelector, useDispatch,} from 'react-redux';
 import { postUserLogout } from '../redux/Authentication/action';
 const Navbar = () => {
   const { token } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
+  const navigate= useNavigate()
 
   const handleLogout = () => {
     dispatch(postUserLogout(token));
+navigate('/')
   };
 
   return (
