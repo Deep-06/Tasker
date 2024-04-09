@@ -1,27 +1,28 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom"
+import Footer from '../components/Footer'
 
 export const Home = () => {
   const navigate = useNavigate()
 
   return (
-    <div className=''>
-      <div className='flex px-4 bg-gradient-to-b from-indigo-500'>
-        <div className='p-8 flex flex-col justify-center items-center gap-4'>
+    <div>
+      <div className='flex flex-col md:flex-row px-4 bg-gradient-to-b from-indigo-500'>
+        <div className='w-[90%] md:w-[50%] p-8 flex flex-col justify-center items-center gap-4'>
           <p className='text-6xl p-2 font-serif hover:font-sans font-medium leading-20 '>Manage Your Task Productively</p>
-          <p className='text-4xl p-2'>Start Your Great Journey From Here 🌟</p>
+          <p className='text-3xl p-2'>Start Your Great Journey From Here 🌟</p>
           <button onClick={() => navigate('/task')} className='text-xl m-4 p-2 px-4 rounded-full bg-blue-500/100 hover:bg-white'>Get Started</button>
         </div>
-        <div className='w-[50%] p-4'>
+        <div className='w-[90%] md:w-[50%] flex justify-center p-4'>
           <img className='rounded-full' src='https://img.freepik.com/premium-vector/girl-is-writing-clipboard_118167-3498.jpg?w=740' alt='' width={"80%"} />
         </div>
       </div>
 
-      <div className='flex px-4'>
-        <div className='w-[50%] p-4'>
+      <div className='flex flex-col md:flex-row px-4'>
+        <div className='w-[90%] md:w-[50%] flex justify-center p-4'>
           <img className='rounded-md' src='https://img.freepik.com/premium-vector/flat-vector-concept-online-exam-questionnaire-form-online-education-survey-internet-quiz_97843-127.jpg?w=740' alt='' width={"100%"} />
         </div>
-        <div className='w-[50%] p-4 flex flex-col justify-center items-center gap-2'>
+        <div className='w-[90%] md:w-[50%] p-4 flex flex-col justify-center items-center gap-2'>
           <p className='text-4xl p-2 text-center text-blue-800'>-WHY CHOOSE US? 🤔</p>
           <p className='text-2xl p-2 text-left'>Tasks connect our plans to actions. They are the building blocks of every project and how
             we transform goals into results.</p>
@@ -50,7 +51,7 @@ export const Home = () => {
           </div>
         </div>
       </div>
-
+      <Footer />
     </div>
   )
 }

@@ -43,19 +43,19 @@ export const editTask = (id, data,token) => async(dispatch) => {
     try{
         dispatch({ type: TASK_REQUEST });
        let res= await axios.patch(`${URL}/tasks/update/${id}`, data,{
+        method: 'PATCH',
         headers: {
-            Authorization: `Bearer ${token}`
-        }
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
         })
         console.log(res)
-        dispatch({ type: PATCH_TASK_SUCCESS })
-        dispatch(getTask())
+        dispatch({ type: PATCH_TASK_SUCCESS, payload:res.data })
+       
 
     }catch(err){
         dispatch({ type: TASK_FAILURE })
-    }
-    
-        
+    }   
 }
 
 export const deleteTask = (id,token) => async(dispatch) => {

@@ -4,6 +4,7 @@ import { addTask } from '../redux/Task/action';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTask, getTask, toggleTaskStatus } from "../redux/Task/action";
+import { useNavigate } from 'react-router-dom'
 
 const initialState = {
   title: "",
@@ -14,6 +15,7 @@ const initialState = {
 export const Task = () => {
   const [data, setData] = useState(initialState);
   const dispatch = useDispatch();
+  const navigate=useNavigate();
   const tasks = useSelector((store) => store.taskReducer.tasks);
   const { token } = useSelector(store => store.authReducer);
   const handleChange = (e) => {
@@ -78,17 +80,17 @@ export const Task = () => {
         <div className='flex justify-around'>
 
           <form onSubmit={handleSubmit} className='flex flex-col sm:flex-col md:flex-col lg:flex-row gap-4'>
-            <input type="text" placeholder="Name" className="w-80 lg:w-64 bg-white shadow rounded"
+            <input type="text" placeholder="Name" className="w-50 lg:w-64 p-2 bg-white shadow rounded"
               name="title"
               value={data.title}
               onChange={handleChange} />
 
-            <input type="text" placeholder="Description" className="w-80 lg:w-64 bg-white shadow rounded"
+            <input type="text" placeholder="Description" className="w-50 lg:w-64 p-2 bg-white shadow rounded"
               name="description"
               value={data.description}
               onChange={handleChange} />
 
-            <select name="priority" value={data.priority} onChange={handleChange} className="w-80 lg:w-64 bg-white shadow rounded">
+            <select name="priority" value={data.priority} onChange={handleChange} className="w-50 p-2 lg:w-64 bg-white shadow rounded">
               <option value="">Select Priority</option>
               <option value="High">High</option>
               <option value="Medium">Medium</option>
@@ -113,7 +115,7 @@ export const Task = () => {
                 <button onClick={() => handleToggleStatus(el._id)} className={`text-l px-2 rounded-md shadow-md ${getStatusColor(el.status)}`}>{el.status ? "Completed" : "In-progress"}</button>
               </div>
               <div className='flex justify-around'>
-                <button className='text-l shadow-md shadow-indigo-500/50 px-2 rounded-md hover:bg-indigo-600' ><img src='/Images/edit-3.svg' alt='' /></button>
+                <button className='text-l shadow-md shadow-indigo-500/50 px-2 rounded-md hover:bg-indigo-600' onClick={()=>navigate(`/editgame/${el._id}`)}><img src='/Images/edit-3.svg' alt='' /></button>
                 <button className='text-l shadow-md shadow-indigo-500/50 px-2 rounded-md hover:bg-indigo-600' onClick={() => handleRemoveProduct(el._id)}><img src='/Images/trash-2.svg' alt='' /></button>
               </div>
             </div>

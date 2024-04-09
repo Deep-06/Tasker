@@ -5,6 +5,7 @@ import { Login } from '../pages/Login';
 import { Signup } from '../pages/Signup';
 import { Task } from '../pages/Task';
 import { PrivateRoutes } from './PrivateRoutes';
+import { Edit } from '../pages/Edit';
 
 const AllRoutes = () => {
   return (
@@ -17,7 +18,7 @@ const AllRoutes = () => {
           <Task />
         </PrivateRoutes>
       } />
-      {/* <Route path='/editgame/:id' element={<Edit/>} /> */}
+      <Route path='/editgame/:id' element={<Edit/>} />
 
     </Routes>
   )
