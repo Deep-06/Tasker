@@ -1,10 +1,10 @@
 # 🌟Tasker
 Welcome to Tasker, a web application designed to help you manage your tasks efficiently. With Tasker, you can easily create, track, and manage your tasks all in one place. Whether you're a professional looking to organize your work projects or a student managing assignments, Tasker has got you covered.
 
-<img src='/Images/Home.png' alt=''/>
+<img src='./frontend/public/Images/Home.png' alt=''/>
 
 ### Why Choose us
-<img src='/Images/Why.png' alt=''/>
+<img src='./frontend/public/Images/Why.png' alt=''/>
 
 ### Features
 - User Authentication: Secure user authentication system allowing users to sign up and log in to their accounts.
@@ -25,19 +25,19 @@ Welcome to Tasker, a web application designed to help you manage your tasks effi
 
 ### Signup Page
 Create an account by providing your username, email address and choosing a secure password.
-<img src='/Images/Signup.png' alt=''/>
+<img src='./frontend/public/Images/Signup.png' alt=''/>
 
 ### Login Page
-<img src='/Images/Login.png' alt=''/>
+<img src='./frontend/public/Images/Login.png' alt=''/>
 
 ### Task Page
 - Create task by filling the required details such as title, description, and priority level.
 - View your tasks, you can edit, delete, or mark them as completed.
-<img src='/Images/Task.png' alt=''/>
+<img src='./frontend/public/Images/Task.png' alt=''/>
 
 ### Edit Page
 You can update your task.
-<img src='/Images/Edit.png' alt=''/>
+<img src='./frontend/public/Images/Edit.png' alt=''/>
 
 ### Technologies Used
 Tasker is built using the following technologies:
