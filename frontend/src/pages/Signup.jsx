@@ -67,7 +67,7 @@ export const Signup = () => {
                             required
                             className='bg-transparent border-b focus:border-none px-2 py-1 rounded-sm w-[90%] outline-none focus:outline-indigo-400 focus:outline-[3px]'
                         />
-                        <input type='submit' value="SUBMIT" className='bg-white py-1 px-8 my-5 rounded-lg  space-x-9 hover:scale-105 active:scale-95 active:shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3)] transition-all duration-150 shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3),0px_-3px_0px_inset_rgba(0,0,0,0.2)]'/>
+                        <input type='submit' value="SIGN UP" className='bg-white py-1 px-8 my-5 rounded-lg  space-x-9 hover:scale-105 active:scale-95 active:shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3)] transition-all duration-150 shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3),0px_-3px_0px_inset_rgba(0,0,0,0.2)]'/>
                         <p>Already have account? <Link to={'/login'} className='text-white'  >Login</Link></p>
                         </div>
                     </form>
