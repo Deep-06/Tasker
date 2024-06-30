@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { postUserLogin } from '../redux/Authentication/action';
 import {  useNavigate } from "react-router-dom"
 export const Login = () => {
@@ -26,8 +26,8 @@ export const Login = () => {
           toast.error("Wrong credential.", {
               style: {
                   borderRadius: '10px',
-                  background: '#5f8fa821',
-                  color: '#fff',
+                  background: 'whitesmoke',
+                  color: 'black',
               },
           })
       } else if (status === 200) {
@@ -35,18 +35,18 @@ export const Login = () => {
               icon: "🎉",
               style: {
                   borderRadius: '10px',
-                  background: '#5f8fa821',
+                  background: 'whitesmoke',
                   backdropFilter: "blur(2px)",
-                  color: '#fff',
+                  color: 'black',
               },
           })
       } else {
           toast.error("Somthing went wrong!", {
               style: {
                   borderRadius: '10px',
-                  background: '#a244427a',
+                  background: 'whitesmoke',
                   backdropFilter: "blur(2px)",
-                  color: '#fff',
+                  color: 'black',
               },
           })
       }
@@ -55,11 +55,14 @@ export const Login = () => {
   if (token) {
       setTimeout(() => {
           navigate("/")
-      }, 500)
+      }, 1000)
   }
   return (
     <div className='flex justify-center items-center'>
-      <form onSubmit={handleLoginPost} className='mt-20 relative  bg-indigo-500/100 rounded-md w-full sm:w-[350px] flex flex-col items-center gap-3 p-7 shadow-[0px_15px_25px_rgba(109,71,222,0.15),0px_5px_10px_rgba(77,79,179,0.22)]'>
+    <div>
+    <Toaster />
+    </div>
+      <form onSubmit={handleLoginPost} className='mt-20 mx-4 max-w-md md:max-w-l w-full relative  bg-indigo-500/100 rounded-md  flex flex-col items-center gap-3 p-7 shadow-[0px_15px_25px_rgba(109,71,222,0.15),0px_5px_10px_rgba(77,79,179,0.22)]'>
                     
                     <div className='w-full flex flex-col items-center gap-3'>
                         <input

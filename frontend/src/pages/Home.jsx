@@ -9,7 +9,7 @@ export const Home = () => {
     <div>
       <div className='flex flex-col md:flex-row px-4 bg-gradient-to-b from-indigo-500'>
         <div className='w-[90%] md:w-[50%] p-8 flex flex-col justify-center items-center gap-4'>
-          <p className='text-6xl p-2 font-serif hover:font-sans font-medium leading-20 '>Manage Your Task Productively</p>
+          <p className='text-4xl md:text-6xl p-2 font-serif hover:font-sans font-medium leading-20 '>Manage Your Task Productively</p>
           <p className='text-3xl p-2'>Start Your Great Journey From Here 🌟</p>
           <button onClick={() => navigate('/task')} className='text-xl m-4 p-2 px-4 rounded-full bg-blue-500/100 hover:bg-white'>Get Started</button>
         </div>

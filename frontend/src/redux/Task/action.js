@@ -95,3 +95,29 @@ export const toggleTaskStatus = (id, token) => async (dispatch) => {
        console.log(err)
     };
   };
+
+
+
+//   export const toggleTaskStatus = (id, token) => (dispatch) => {
+//     try {
+//       const res = axios.patch(
+//         `${URL}/tasks/toggleStatus/${id}`, 
+//         { status: true },
+//         {
+//           method: 'PATCH',
+//           headers: {
+//             'Content-Type': 'application/json',
+//             Authorization: `Bearer ${token}`,
+//           },
+//         }
+//       );
+//       console.log(res);
+//       dispatch({
+//         type: TOGGLE_STATUS,
+//         payload: res.data
+//       });
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+  

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import { postUserRegistration } from '../redux/Authentication/action';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 export const Signup = () => {
     const [newUserdata, setnewUserData] = useState({ username: "", email: "", password: "" })
     const dispatch = useDispatch()
@@ -21,8 +21,8 @@ export const Signup = () => {
             toast.error("Use different email address.",{
                 style: {
                     borderRadius: '10px',
-                    background: '#5f8fa821',
-                    color: '#fff',
+                    background: 'whitesmoke',
+                    color: 'black',
                   },
             })
         }else if(status===200){
@@ -30,15 +30,18 @@ export const Signup = () => {
                 icon:"🎉",
                 style: {
                     borderRadius: '10px',
-                    background: '#5f8fa821',
-                    color: '#fff',
+                    background: 'whitesmoke',
+                    color: 'black',
                   },
             })
         }
     }
   return (
     <div className='flex justify-center items-center'>
-      <form onSubmit={handlePostUser} className='mt-20 relative bg-indigo-500/100 rounded-md w-full sm:w-[350px] flex flex-col items-center gap-3 p-7 shadow-[0px_15px_25px_rgba(109,71,222,0.15),0px_5px_10px_rgba(77,79,179,0.22)]'>
+    <div>
+    <Toaster />
+    </div>
+      <form onSubmit={handlePostUser} className='mt-20 mx-4 max-w-md md:max-w-l w-full relative bg-indigo-500/100 rounded-md flex flex-col items-center gap-3 p-7 shadow-[0px_15px_25px_rgba(109,71,222,0.15),0px_5px_10px_rgba(77,79,179,0.22)]'>
       <div className='w-full flex flex-col items-center gap-3'>
                         <input
                             onChange={handleInputChange}
