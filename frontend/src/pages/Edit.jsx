@@ -2,7 +2,7 @@ import React from 'react'
 import  { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom'
-import { editTask } from '../redux/Task/action';
+import { editTask, getTask } from '../redux/Task/action';
 
 const initialState = {
     title: "",
@@ -29,6 +29,7 @@ export const Edit = () => {
        // console.log(data);
         dispatch(editTask(id,data, token));
         setData(initialState);
+        dispatch(getTask);
         navigate('/task')
       }
 
@@ -39,7 +40,7 @@ export const Edit = () => {
 
     return (
         <div className='flex justify-center items-center mt-20'>
-        <div className='bg-indigo-500/100 w-[250px] sm:w-[350px]'>
+        <div className='w-[250px] sm:w-[350px] rounded-sm border-indigo-500 border-2 '>
             <h3 className='p-8 text-4xl font-serif'>Edit Task</h3>
             <div className='flex justify-around'>
 
@@ -49,7 +50,7 @@ export const Edit = () => {
                         value={data.title}
                         onChange={handleChange} />
 
-                    <input type="text" placeholder="Description" className="w-50 lg:w-64 bg-white shadow rounded"
+                    <input type="text" placeholder="Description" className="w-50 h-24 lg:w-64 bg-white shadow rounded"
                         name="description"
                         value={data.description}
                         onChange={handleChange} />
@@ -61,7 +62,7 @@ export const Edit = () => {
                         <option value="Low">Low</option>
                     </select>
 
-                    <button type="submit" className='bg-indigo-600 px-3 w-50 lg:w-64 rounded-md text-lg'>Submit</button>
+                    <button type="submit" className='bg-indigo-600 px-3 py-2 w-50 lg:w-64 rounded-md text-lg text-white'>Submit</button>
 
                 </form>
             </div>

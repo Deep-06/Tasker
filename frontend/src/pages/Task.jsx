@@ -27,7 +27,7 @@ export const Task = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(data);
+   // console.log(data);
     dispatch(addTask(data, token));
     setData(initialState);
   }
@@ -45,7 +45,7 @@ export const Task = () => {
     dispatch(deleteTask(id, token));
   };
 
-  console.log(tasks)
+ // console.log(tasks)
   function getPriorityColor(priority) {
     switch (priority) {
       case "Low":
@@ -97,7 +97,7 @@ export const Task = () => {
               <option value="Low">Low</option>
             </select>
 
-            <button type="submit" className='bg-indigo-600 px-3 rounded-md text-lg'>Add Task</button>
+            <button type="submit" className='bg-indigo-600 px-3 rounded-md text-lg text-white'>Add Task</button>
 
           </form>
         </div>
