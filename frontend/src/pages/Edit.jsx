@@ -26,10 +26,9 @@ export const Edit = () => {
 
       const handleEdit = () => {
        // e.preventDefault();
-       // console.log(data);
         dispatch(editTask(id,data, token));
         setData(initialState);
-        dispatch(getTask);
+        dispatch(getTask(token));
         navigate('/task')
       }
 
@@ -45,17 +44,17 @@ export const Edit = () => {
             <div className='flex justify-around'>
 
                 <form onSubmit={handleEdit} className='flex flex-col gap-4 pb-8'>
-                    <input type="text" placeholder="Name" className="w-50 lg:w-64 bg-white shadow rounded"
+                    <input type="text" placeholder="Name" className="w-50 lg:w-64 py-2 px-1 bg-white shadow rounded border-indigo-500/50 border-1"
                         name="title"
                         value={data.title}
                         onChange={handleChange} />
 
-                    <input type="text" placeholder="Description" className="w-50 h-24 lg:w-64 bg-white shadow rounded"
+                    <input type="text" placeholder="Description" className="w-50 h-24 lg:w-64 px-1 text-justify text-wrap align-top bg-white shadow rounded border-indigo-500/50 border-1"
                         name="description"
                         value={data.description}
                         onChange={handleChange} />
 
-                    <select name="priority" value={data.priority} onChange={handleChange} className="w-50 lg:w-64 bg-white shadow rounded">
+                    <select name="priority" value={data.priority} onChange={handleChange} className="w-50 lg:w-64 px-1 py-2 bg-white shadow rounded border-indigo-500/50 border-1">
                         <option value="">Select Priority</option>
                         <option value="High">High</option>
                         <option value="Medium">Medium</option>

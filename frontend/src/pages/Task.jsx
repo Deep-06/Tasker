@@ -14,6 +14,8 @@ const initialState = {
 };
 export const Task = () => {
   const [data, setData] = useState(initialState);
+  const [priorityFilter, setPriorityFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
   const dispatch = useDispatch();
   const navigate=useNavigate();
   const tasks = useSelector((store) => store.taskReducer.tasks);
@@ -44,6 +46,12 @@ export const Task = () => {
   const handleRemoveProduct = (id) => {
     dispatch(deleteTask(id, token));
   };
+
+  const filteredTasks = tasks.filter(task => {
+    const priorityMatch = priorityFilter ? task.priority === priorityFilter : true;
+    const statusMatch = statusFilter ? (statusFilter === "Completed" ? task.status : !task.status) : true;
+    return priorityMatch && statusMatch;
+  });
 
  // console.log(tasks)
   function getPriorityColor(priority) {
@@ -102,12 +110,29 @@ export const Task = () => {
           </form>
         </div>
       </div>
-
+      
+      {/* Filters */}
+      <div className='p-4 mx-4'>
+        <h3 className='text-xl font-serif'>Filter Tasks</h3>
+        <div className='flex gap-4'>
+          <select onChange={(e) => setPriorityFilter(e.target.value)} value={priorityFilter} className="p-2 bg-white shadow rounded">
+            <option value="">All Priorities</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+          <select onChange={(e) => setStatusFilter(e.target.value)} value={statusFilter} className="p-2 bg-white shadow rounded">
+            <option value="">All Statuses</option>
+            <option value="Completed">Completed</option>
+            <option value="In-progress">In-progress</option>
+          </select>
+        </div>
+      </div>
 
       {/* Task list */}
 
       <div className='grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-5 m-4 py-4'>
-        {tasks.length > 0 ? tasks?.map((el) => {
+        {filteredTasks.length > 0 ? filteredTasks?.map((el) => {
           return <div key={el.id} className='text-left p-4 flex flex-col gap-2 shadow-md shadow-indigo-500/50'>
             <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2'>
               <div className='flex justify-around'>
