@@ -113,8 +113,8 @@ export const Task = () => {
       
       {/* Filters */}
       <div className='p-4 mx-4'>
-        <h3 className='text-xl font-serif'>Filter Tasks</h3>
-        <div className='flex gap-4'>
+        <div className='flex gap-6'>
+          <h3 className='text-xl font-serif'>Filter Tasks</h3>
           <select onChange={(e) => setPriorityFilter(e.target.value)} value={priorityFilter} className="p-2 bg-white shadow rounded">
             <option value="">All Priorities</option>
             <option value="High">High</option>
