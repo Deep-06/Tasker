@@ -41,7 +41,7 @@ export const Task = () => {
 
   useEffect(() => {
     dispatch(getTask(token))
-  }, [])
+  }, [dispatch, token])
 
   const handleRemoveProduct = (id) => {
     dispatch(deleteTask(id, token));

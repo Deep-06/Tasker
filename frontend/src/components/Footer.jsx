@@ -5,11 +5,12 @@ import {
    faTwitter,
    faInstagram,
  } from "@fortawesome/free-brands-svg-icons";
+ import { FaTasks } from "react-icons/fa";
 const Footer = () => {
   return (
     <div className='flex justify-around bg-gradient-to-b from-white to-indigo-500 p-4 pb-8'>
       <div className='text-left'>
-        <p className='text-3xl p-2'>🌟Tasker</p>
+        <p className='text-3xl p-2 flex justify-left items-center gap-1'> <FaTasks/> Tasker</p>
         <p className='text-xl p-2'>Tasker help you to create and manage task</p>
         <p className='text-xl p-2'>Follow us on:</p>
         <div className='flex justify-around'>
