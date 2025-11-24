@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postUserRegistration } from '../redux/Authentication/action';
 import toast, { Toaster } from 'react-hot-toast';
+import {  useNavigate } from "react-router-dom";
+
 export const Signup = () => {
-    const [newUserdata, setnewUserData] = useState({ username: "", email: "", password: "" })
-    const dispatch = useDispatch()
+    const [newUserdata, setnewUserData] = useState({ username: "", email: "", password: "" });
+    const dispatch = useDispatch();
+    const { isLoading } = useSelector((store) => store.authReducer);
+    const navigate = useNavigate()
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -18,7 +22,7 @@ export const Signup = () => {
         e.preventDefault();
         const status = await dispatch(postUserRegistration(newUserdata))
         if(status===201){
-            toast.error("Use different email address.",{
+            toast.error("Use different Email Id.",{
                 style: {
                     borderRadius: '10px',
                     background: 'whitesmoke',
@@ -34,6 +38,9 @@ export const Signup = () => {
                     color: 'black',
                   },
             })
+            setTimeout(() => {
+                navigate("/login")
+            }, 1000)
         }
     }
   return (
@@ -70,7 +77,7 @@ export const Signup = () => {
                             required
                             className='bg-transparent border-b focus:border-none px-2 py-1 rounded-sm w-[90%] outline-none focus:outline-indigo-400 focus:outline-[3px]'
                         />
-                        <input type='submit' value="SIGN UP" className='bg-white text-black py-2 px-8 my-5 rounded-lg  space-x-9 hover:scale-105 active:scale-95 active:shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3)] transition-all duration-150 shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3),0px_-3px_0px_inset_rgba(0,0,0,0.2)]'/>
+                        <input type='submit' value={isLoading ? 'Loading...' : "SIGN UP"} className='bg-white text-black py-2 px-8 my-5 rounded-lg  space-x-9 hover:scale-105 active:scale-95 active:shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3)] transition-all duration-150 shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3),0px_-3px_0px_inset_rgba(0,0,0,0.2)]'/>
                         <p className='text-black'>Already have account? <Link to={'/login'} className='text-white'>Login</Link></p>
                         </div>
                     </form>

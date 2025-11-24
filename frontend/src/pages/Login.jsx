@@ -5,10 +5,10 @@ import toast, { Toaster } from 'react-hot-toast';
 import { postUserLogin } from '../redux/Authentication/action';
 import {  useNavigate } from "react-router-dom"
 export const Login = () => {
-  const [loginData, setLoginData] = useState({ email: "", password: "" })
-  const { isLoading, token } = useSelector((store) => store.authReducer)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const { isLoading, token } = useSelector((store) => store.authReducer);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   console.log(token)
   const handleInputChange = (e) => {
@@ -23,7 +23,7 @@ export const Login = () => {
       
       const status = await dispatch(postUserLogin(loginData))
       if (status === 201) {
-          toast.error("Wrong credential.", {
+          toast.error("Wrong credential", {
               style: {
                   borderRadius: '10px',
                   background: 'whitesmoke',
@@ -54,7 +54,7 @@ export const Login = () => {
   }
   if (token) {
       setTimeout(() => {
-          navigate("/")
+          navigate("/task")
       }, 1000)
   }
   return (
