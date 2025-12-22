@@ -20,6 +20,10 @@ app.use(express.urlencoded({extended: true}))
 app.use("/users",userRouter)
 app.use("/tasks",taskRouter)
 
+app.get("/health",(req,res)=>{
+    res.send("Welcome to Tasker App");
+});
+
 connection();
 
 app.listen(process.env.PORT, () => {
